@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyTimerApp</string>
+    <string name="timerVal">00:00:00</string>
+</resources>

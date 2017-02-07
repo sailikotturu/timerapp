@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_watch_frag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.sailik.mytimerapp.WatchFrag">
+
+    <Button
+        android:text="START"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_start"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="92dp" />
+    <Button
+        android:text="RESET"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/button_start"
+        android:id="@+id/button_reset"
+        android:layout_marginTop="92dp"
+        />
+
+    <TextView
+        android:id="@+id/timer_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textColor="#303F9F"
+        android:text="@string/timerVal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="26dp" />
+
+</RelativeLayout>
