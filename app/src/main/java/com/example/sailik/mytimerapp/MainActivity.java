@@ -29,11 +29,13 @@ public class MainActivity extends AppCompatActivity  {
                 stopwatch.setBackgroundResource(R.drawable.eraseline);
                 stopwatch.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stopwatch1, 0, 0, 0);
                 stopwatch.setTextColor(Color.parseColor("#303F9F"));
-                Fragment timer_frag = new TimerFrag();
-                FragmentManager fm= getFragmentManager();
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fragspace, timer_frag);
-                fragmentTransaction.commit();
+                Fragment fragment = new TimerFrag();
+                replaceFragment(fragment);
+//                Fragment timer_frag = new TimerFrag();
+//                FragmentManager fm= getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//                fragmentTransaction.replace(R.id.fragspace, timer_frag);
+//                fragmentTransaction.commit();
             }
         });
         stopwatch.setOnClickListener(new View.OnClickListener() {
@@ -45,15 +47,42 @@ public class MainActivity extends AppCompatActivity  {
                 timer.setBackgroundResource(R.drawable.eraseline);
                 timer.setCompoundDrawablesWithIntrinsicBounds(R.drawable.timer1, 0, 0, 0);
                 timer.setTextColor(Color.parseColor("#303F9F"));
-                Fragment watch_frag = new WatchFrag();
-                FragmentManager fm= getFragmentManager();
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fragspace, watch_frag);
-                fragmentTransaction.commit();
-            }
+
+                Fragment fragment = new WatchFrag();
+                replaceFragment(fragment);
+
+                }
         });
 
     }
+
+    private void replaceFragment (Fragment fragment){
+        String backFragName =  fragment.getClass().getName();
+        //String fragmentTag = backFragName;
+
+        FragmentManager fm = getFragmentManager();
+        boolean fragmentPopped = fm.popBackStackImmediate (backFragName, 0);
+
+        if (!fragmentPopped && fm.findFragmentByTag(backFragName) == null){ //fragment not in back stack, create it.
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragspace, fragment, backFragName);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(backFragName);
+            ft.commit();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
 
 
 }

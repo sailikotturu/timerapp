@@ -15,7 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WatchFrag"></activity>
+
+
+        <activity android:name=".Result"
+            android:label="Result Activity"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
